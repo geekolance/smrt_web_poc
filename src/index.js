@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import ReactDOM from "react-dom";
 import { Camera } from "./camera";
 import { Root, Preview, Footer, GlobalStyle } from "./styles";
+import FreehandDrawing from "./kanva";
 
 function App() {
   const [isCameraOpen, setIsCameraOpen] = useState(false);
@@ -20,7 +21,8 @@ function App() {
         {cardImage && (
           <div>
             <h2>Preview</h2>
-            <Preview src={cardImage && URL.createObjectURL(cardImage)} />
+            {/* <Preview src={cardImage && URL.createObjectURL(cardImage)} /> */}
+            <FreehandDrawing imageUrl={cardImage} />
           </div>
         )}
 
