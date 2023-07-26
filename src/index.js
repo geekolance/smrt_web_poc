@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { Camera } from "./camera";
 import { Root, Preview, Footer, GlobalStyle } from "./styles";
 import FreehandDrawing from "./kanva";
+import EditImage from "./components/EditImage";
 
 function App() {
   const [isCameraOpen, setIsCameraOpen] = useState(false);
@@ -21,11 +22,11 @@ function App() {
         {cardImage && (
           <div>
             <h2>Preview</h2>
-            {/* <Preview src={cardImage && URL.createObjectURL(cardImage)} /> */}
+            <Preview src={cardImage && URL.createObjectURL(cardImage)} />
             <FreehandDrawing imageUrl={cardImage} />
           </div>
         )}
-
+        <EditImage imageUrl={cardImage} />
         <Footer>
           <button onClick={() => setIsCameraOpen(true)}>Open Camera</button>
           <button

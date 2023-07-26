@@ -1,0 +1,25 @@
+.mainTab {
+  align-items: center;
+  border: 1px solid #000;
+  border-radius: 2%;
+  padding: 2%;
+}
+
+@media (max-width: 800px) {
+  .mainTab {
+    align-items: center;
+    border: 1px solid #000;
+    border-radius: 2%;
+    padding: 2%;
+    position: fixed;
+    right: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    background: silver;
+    margin-bottom: 2%;
+  }
+
+  /* CSS that should be displayed if width is equal to or less than 800px goes here */
+}

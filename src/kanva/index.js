@@ -61,7 +61,6 @@ const FreehandDrawing = (props) => {
             offsetX={0}
             offsetY={0}
           />
-          {console.log(lines)}
           {lines.map((line, i) => (
             <Line
               key={i}
@@ -78,15 +77,6 @@ const FreehandDrawing = (props) => {
           ))}
         </Layer>
       </Stage>
-      <select
-        value={tool}
-        onChange={(e) => {
-          setTool(e.target.value);
-        }}
-      >
-        <option value="pen">Pen</option>
-        <option value="eraser">Eraser</option>
-      </select>
     </div>
   );
 };
