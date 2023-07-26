@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, { useState, useRef } from 'react';
 import { Stage, Layer, Line, Text, Image } from 'react-konva';
 import useImage from 'use-image';
 
@@ -20,12 +20,15 @@ const FreehandDrawing = (props) => {
   const isDrawing = React.useRef(false);
   const [img] = useImage("https://picsum.photos/500/500");
 
+  const updateDrawing = (drawing) => {
+    setAnnotations(...annotations, { [value]: { "lines": drawing } })
+  }
+
   const handleMouseDown = (e) => {
     console.log("in here")
     isDrawing.current = true;
     const pos = e.target.getStage().getPointerPosition();
-    setLines([...lines, { tool, points: [pos.x, pos.y] }]);
-    setAnnotations
+    setLines([...lines, { value, points: [pos.x, pos.y] }]);
   };
 
   const handleMouseMove = (e) => {
@@ -71,18 +74,21 @@ const FreehandDrawing = (props) => {
             offsetY={0}
           />
           {lines.map((line, i) => (
-            <Line
-              key={i}
-              points={line.points}
-              stroke="#df4b26"
-              strokeWidth={5}
-              tension={0.5}
-              lineCap="round"
-              lineJoin="round"
-              globalCompositeOperation={
-                line.tool === 'eraser' ? 'destination-out' : 'source-over'
-              }
-            />
+            <>
+              {console.log(line)}
+              {line.value === value && <Line
+                key={i}
+                points={line.points}
+                stroke="#df4b26"
+                strokeWidth={5}
+                tension={0.5}
+                lineCap="round"
+                lineJoin="round"
+              // globalCompositeOperation={
+              //   line.tool === 'eraser' ? 'destination-out' : 'source-over'
+              // }
+              />}
+            </>
           ))}
         </Layer>
       </Stage>
