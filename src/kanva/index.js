@@ -10,7 +10,7 @@ const FreehandDrawing = (props) => {
   // Sample DataStructure
   // {
   //   "spot" : {
-  //     lines: ["10", "20", "11", "20"]
+  //     circle: ["10", "20", "11", "20"]
   //   }
   // }
 
