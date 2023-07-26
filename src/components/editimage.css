@@ -3,6 +3,7 @@
   border: 1px solid #000;
   border-radius: 2%;
   padding: 2%;
+  background: silver;
 }
 
 @media (max-width: 800px) {

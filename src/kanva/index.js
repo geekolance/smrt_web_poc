@@ -1,14 +1,22 @@
-import React from 'react';
+import React, {useState, useRef} from 'react';
 import { Stage, Layer, Line, Text, Image } from 'react-konva';
 import useImage from 'use-image';
 
 const FreehandDrawing = (props) => {
   const {
-    image
+    image,
+    value
   } = props
+  // Sample DataStructure
+  // {
+  //   "spot" : {
+  //     lines: ["10", "20", "11", "20"]
+  //   }
+  // }
 
-  const [tool, setTool] = React.useState('pen');
-  const [lines, setLines] = React.useState([]);
+  const [tool, setTool] = useState('pen');
+  const [lines, setLines] = useState([]);
+  const [annotations, setAnnotations] = useState({})
   const isDrawing = React.useRef(false);
   const [img] = useImage("https://picsum.photos/500/500");
 
@@ -17,6 +25,7 @@ const FreehandDrawing = (props) => {
     isDrawing.current = true;
     const pos = e.target.getStage().getPointerPosition();
     setLines([...lines, { tool, points: [pos.x, pos.y] }]);
+    setAnnotations
   };
 
   const handleMouseMove = (e) => {
