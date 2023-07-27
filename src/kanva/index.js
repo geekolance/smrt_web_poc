@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
-import { Stage, Layer, Line, Text, Image } from 'react-konva';
-import useImage from 'use-image';
+import { Stage, Layer, Circle, Text, Image } from 'react-konva';
+import useImage from 'use-image'
+import { imageMarkingColors } from '../config/colorCoding';
 
 const FreehandDrawing = (props) => {
   const {
@@ -25,9 +26,8 @@ const FreehandDrawing = (props) => {
   }
 
   const handleMouseDown = (e) => {
-    console.log("in here")
-    isDrawing.current = true;
-    const pos = e.target.getStage().getPointerPosition();
+    isDrawing.current = true
+    const pos = e.target.getStage().getPointerPosition()
     setLines([...lines, { value, points: [pos.x, pos.y] }]);
   };
 
@@ -52,16 +52,13 @@ const FreehandDrawing = (props) => {
   };
 
   return (
-    <div >
+    <div>
       <Stage
         width={500}
         height={500}
         onMouseDown={handleMouseDown}
-        onMousemove={handleMouseMove}
         onMouseup={handleMouseUp}
-        // onTap={handleMouseDown}
         onTouchStart={handleMouseDown}
-        onTouchMove={handleMouseMove}
         onTouchEnd={handleMouseUp}
       >
         <Layer>
@@ -75,19 +72,15 @@ const FreehandDrawing = (props) => {
           />
           {lines.map((line, i) => (
             <>
-              {console.log(line)}
-              {line.value === value && <Line
-                key={i}
-                points={line.points}
-                stroke="#df4b26"
-                strokeWidth={5}
-                tension={0.5}
-                lineCap="round"
-                lineJoin="round"
-              // globalCompositeOperation={
-              //   line.tool === 'eraser' ? 'destination-out' : 'source-over'
-              // }
-              />}
+              {
+                line.value === value && <Circle
+                  key={i}
+                  x={line.points[0]}
+                  y={line.points[1]}
+                  radius={6}
+                  fill={imageMarkingColors[line.value]}
+                />
+              }
             </>
           ))}
         </Layer>
