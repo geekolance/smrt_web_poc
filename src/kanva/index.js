@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Stage, Layer, Circle, Text, Image } from 'react-konva';
 import useImage from 'use-image'
 import { imageMarkingColors } from '../config/colorCoding';
-import { StickyNote } from '../components/note';
+import { Note } from '../components/note';
 
 const FreehandDrawing = (props) => {
   const {
@@ -81,7 +81,7 @@ const FreehandDrawing = (props) => {
             <>
               {
                 line.value === 'note' && (
-                  <StickyNote
+                  <Note
                     x={parseInt(lines[0].points[0]) + 5}
                     y={parseInt(lines[0].points[1]) + 5}
                     text={text}
