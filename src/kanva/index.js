@@ -80,7 +80,7 @@ const FreehandDrawing = (props) => {
           {lines.map((line, i) => (
             <>
               {
-                line.value === 'note' && (
+                line.value === 'note' && value === 'note' && (
                   <Note
                     x={parseInt(lines[0].points[0]) + 5}
                     y={parseInt(lines[0].points[1]) + 5}
