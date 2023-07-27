@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Group, Rect } from "react-konva";
 import { EditableText } from "./EditableText";
 
-export function StickyNote({
+export function Note({
   colour,
   text,
   x,
