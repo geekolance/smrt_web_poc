@@ -4,14 +4,14 @@ import Tab from '@mui/material/Tab'
 import Box from '@mui/material/Box'
 import './editimage.css'
 import FreehandDrawing from '../kanva'
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles'
 
 const EditImage = (props) => {
   const {
     imageUrl
   } = props
 
-  const [value, setValue] = React.useState('one');
+  const [value, setValue] = React.useState('spot')
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -64,7 +64,7 @@ const EditImage = (props) => {
               label="Spot"
               wrapped
             />
-            <Tab value="damange" label="Damage" />
+            <Tab value="damage" label="Damage" />
             <Tab value="alter" label="Alter" />
             <Tab value="note" label="Note" />
           </Tabs>
